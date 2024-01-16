@@ -12,7 +12,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(String username, String password, String phoneNumber, String address) {
+    public User registerUser(String username,String email, String password, String phoneNumber, String address) {
+
+
         return null;
     }
 }

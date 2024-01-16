@@ -1,7 +1,11 @@
 package com.NetworkMarketing.NetworkMarketing.repositories;
 
+import com.NetworkMarketing.NetworkMarketing.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findByEmail(String email);
 }

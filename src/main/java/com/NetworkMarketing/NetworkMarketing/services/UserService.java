@@ -4,5 +4,5 @@ import com.NetworkMarketing.NetworkMarketing.models.User;
 
 public interface UserService {
 
-    User registerUser(String username,String password, String phoneNumber, String address);
+    User registerUser(String username,String email,String password, String phoneNumber, String address);
 }
