@@ -3,7 +3,9 @@ package com.NetworkMarketing.NetworkMarketing.controller;
 import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserReponseDto;
 import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserRequstDto;
 import com.NetworkMarketing.NetworkMarketing.services.UserService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class UserController {
 
 
