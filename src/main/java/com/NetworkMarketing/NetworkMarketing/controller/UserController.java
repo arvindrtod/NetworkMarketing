@@ -33,7 +33,7 @@ public class UserController {
             System.out.println("Error:" + e.getMessage());
             registerUserReponseDto.setResponseStatus(ResponseStatus.FAILURE);
         }
-        return registerUserReponseDto;
+        return null;
     }
 
 }
