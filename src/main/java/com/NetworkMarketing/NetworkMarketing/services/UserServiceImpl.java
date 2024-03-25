@@ -20,10 +20,16 @@ public class UserServiceImpl implements UserService {
     public User registerUser(String username,String email, String password, String phoneNumber, String address) {
 
         Optional<User> userOptional=userRepository.findByEmail(email);
-        if(userOptional.isEmpty()){
-            return null;
+        if(userOptional.isPresent()){
+            throw new RuntimeException("user already present");
         }
-        User user= userOptional.get();
-        return user;
+        User user= new User();
+        user.setUserName(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        user.setAddress(address);
+        User savedUser = userRepository.save(user);
+        return savedUser;
     }
 }
