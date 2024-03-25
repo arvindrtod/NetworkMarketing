@@ -3,7 +3,7 @@ package com.NetworkMarketing.NetworkMarketing.dtos;
 import lombok.Data;
 
 @Data
-public class RegisterUserReponseDto {
+public class RegisterUserResponseDto {
 
     private Long id;
     private ResponseStatus responseStatus;

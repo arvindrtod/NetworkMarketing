@@ -10,9 +10,8 @@ import java.util.List;
 public class User extends BaseModel{
 
     private String userName;
+    private String email;
     private String password;
     private String phoneNumber;
     private String address;
-    private List<LeftDownline> leftDownline;
-    private List<RightDownLine> rightDownLine;
 }

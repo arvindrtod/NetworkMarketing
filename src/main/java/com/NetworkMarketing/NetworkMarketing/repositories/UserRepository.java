@@ -4,8 +4,13 @@ import com.NetworkMarketing.NetworkMarketing.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
 
-    User findByEmail(String email);
+@Repository
+public interface UserRepository extends JpaRepository<User,Long> {
+
+    @Override
+    Optional<User> findById(Long aLong);
+
+    Optional<User> findByEmail(String email);
 }

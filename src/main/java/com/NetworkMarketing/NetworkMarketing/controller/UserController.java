@@ -1,39 +1,45 @@
 package com.NetworkMarketing.NetworkMarketing.controller;
 
-import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserReponseDto;
-import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserRequstDto;
+import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserResponseDto;
+import com.NetworkMarketing.NetworkMarketing.dtos.RegisterUserRequestDto;
 import com.NetworkMarketing.NetworkMarketing.dtos.ResponseStatus;
 import com.NetworkMarketing.NetworkMarketing.models.User;
 import com.NetworkMarketing.NetworkMarketing.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("users")
 public class UserController {
 
 
     private UserService userService;
-
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    RegisterUserReponseDto registerUserReponseDto = new RegisterUserReponseDto();
 
-    RegisterUserReponseDto registerUser(RegisterUserRequstDto registerUserRequstDto) {
+    @GetMapping
+    RegisterUserResponseDto registerUser(@RequestBody RegisterUserRequestDto registerUserRequestDto) {
+        RegisterUserResponseDto registerUserResponseDto = new RegisterUserResponseDto();
         try {
-            User user = userService.registerUser(registerUserRequstDto.getUsername(),
-                    registerUserRequstDto.getEmail(),
-                    registerUserRequstDto.getPassword(),
-                    registerUserRequstDto.getPhoneNumber(),
-                    registerUserRequstDto.getAddress());
+            User user = userService.registerUser(registerUserRequestDto.getUsername(),
+                    registerUserRequestDto.getEmail(),
+                    registerUserRequestDto.getPassword(),
+                    registerUserRequestDto.getPhoneNumber(),
+                    registerUserRequestDto.getAddress());
 
-            registerUserReponseDto.setId(user.getId());
-            registerUserReponseDto.setResponseStatus(ResponseStatus.SUCCESS);
+            registerUserResponseDto.setId(user.getId());
+            registerUserResponseDto.setResponseStatus(ResponseStatus.SUCCESS);
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
-            registerUserReponseDto.setResponseStatus(ResponseStatus.FAILURE);
+            registerUserResponseDto.setResponseStatus(ResponseStatus.FAILURE);
         }
-        return registerUserReponseDto;
+        return null;
     }
 
 }
